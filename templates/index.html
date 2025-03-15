@@ -6,14 +6,22 @@
     <title>Seznam školek</title>
 </head>
 <body>
-    <h1>Seznam školek</h1>
-    <ul>
-        {% for skolka in skolky %}
-            <li>
-                <strong>{{ skolka.nazev }}</strong><br>
-                📞 {{ skolka.telefon }} | 🌍 <a href="{{ skolka.web }}">{{ skolka.web }}</a> | ✉ {{ skolka.email }}
-            </li>
-        {% endfor %}
-    </ul>
+    <h1>Seznam mateřských školek</h1>
+
+    {% if skolky %}
+        <ul>
+            {% for skolka in skolky %}
+                <li>
+                    <strong>{{ skolka.nazev }}</strong><br>
+                    📞 Telefon: {{ skolka.telefon }}<br>
+                    ✉️ Email: <a href="mailto:{{ skolka.email }}">{{ skolka.email }}</a><br>
+                    🌍 Web: <a href="{{ skolka.web }}" target="_blank">{{ skolka.web }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Žádné školky nebyly nalezeny.</p>
+    {% endif %}
+
 </body>
 </html>
